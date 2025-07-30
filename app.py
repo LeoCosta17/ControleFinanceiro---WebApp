@@ -35,7 +35,7 @@ def index():
     #Adicionar lançamento
     if request.method == "POST":
         descricao = request.form['descricao']
-        tipo = int(request.form['tipo'])
+        tipo = request.form['tipo']
         valor = float(request.form['valor'])
         novo_lancamento = Lancamento(descricao, tipo, valor)
         try:
