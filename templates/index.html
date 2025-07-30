@@ -1,0 +1,42 @@
+{% extends 'base_template.html' %}
+
+{% block head %}
+<h1>CONTROLE FINANCEIRO</h1>
+{% endblock %}
+
+{% block body %}
+
+<div class="content">
+    <h1>Lançamentos</h1>
+    <table>
+        <tr>DATA</tr>
+        <tr>DESCRIÇÃO</tr>
+        <tr>VALOR</tr>
+        <tr>TIPO</tr>
+        <tr>AÇÃO</tr>
+        <form action="/", method="POST">
+            <input type="text" name="descricao" id="descricao">
+            <select name="tipo">
+                <option value="Débito">Débito</option>
+                <option value="Crédito">Crédito</option>
+            </select>
+            <input type="text" name="valor" id="valor">
+            <input type="submit" value="Adicionar" id="btn_Add">
+        </form>
+        {% for lancamento in lancamentos%}
+
+        <tr>
+            <td>{{lancamento.data_lancamento}}</td>
+            <td>{{lancamento.descricao}}</td>
+            <td>{{lancamento.tipo}}</td>
+            <td>{{lancamento.valor}}</td>
+            <td>
+                <a>Deletar</a>
+                <a>Atualizar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
