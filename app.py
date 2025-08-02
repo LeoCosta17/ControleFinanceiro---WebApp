@@ -48,7 +48,19 @@ def index():
     else:
         lancamentos = Lancamento.query.order_by(Lancamento.data_lancamento).all()
         return render_template("index.html", lancamentos=lancamentos)
+    
 
+#Deletar elemento
+@app.route("/delete/<int:id>")
+
+def delete_by_id(id: int):
+    lancamento_deletado = Lancamento.query.get_or_404(id)
+    try:
+        db.session.delete(lancamento_deletado)
+        db.session.commit()
+        return redirect("/")
+    except Exception as err:
+        return f"ERRO: {err}"
 
 if __name__ in "__main__":
     app.run(debug=True)

@@ -14,6 +14,7 @@
         <tr>VALOR</tr>
         <tr>TIPO</tr>
         <tr>AÇÃO</tr>
+        <br>
         <form action="/", method="POST">
             <input type="text" name="descricao" id="descricao">
             <select name="tipo">
@@ -26,13 +27,13 @@
         {% for lancamento in lancamentos%}
 
         <tr>
-            <td>{{lancamento.data_lancamento.strftime("%d/%m/%Y")}}</td>
-            <td>{{lancamento.descricao}}</td>
-            <td>{{lancamento.tipo}}</td>
-            <td>{{lancamento.valor}}</td>
+            <td id="campo_data">{{lancamento.data_lancamento.strftime("%d/%m/%Y")}}</td>
+            <td id="campo_descricao">{{lancamento.descricao}}</td>
+            <td id="campo_tipo">{{lancamento.tipo}}</td>
+            <td id="campo_valor">{{lancamento.valor}}</td>
             <td>
-                <a>Deletar</a>
-                <a>Atualizar</a>
+                <a href="/delete/{{lancamento.id}}" class="btn" id="btn_deletar">Deletar</a>
+                <a href="/update/{{lancamento.id}}" class="btn" id="btn_atualizar">Atualizar</a>
             </td>
         </tr>
         {% endfor %}
