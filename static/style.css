@@ -4,13 +4,30 @@ body {
   padding: 0;
 }
 
+table {
+  margin: auto;
+}
 table td, table tr {
   padding: 2px;
-  border: 1px solid #ccc;
+}
+table tr {
+  border: gray solid 1px;
 }
 
 .btn {
   cursor: pointer;
+}
+
+.menu_estatisticas {
+  text-align: center;
+  padding-bottom: 20px;
+}
+.menu_estatisticas label {
+  padding: 15px;
+}
+
+.form_add {
+  text-align: center;
 }
 
 #campo_data {

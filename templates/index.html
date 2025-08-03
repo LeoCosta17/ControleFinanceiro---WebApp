@@ -8,6 +8,23 @@
 
 <div class="content">
     <h1>Lançamentos</h1>
+
+    <div class="menu_estatisticas">
+        <label>TOTAL DÉBITOS</label>
+        <label>TOTAL CREDITOS</label>
+        <label>SALDO</label>
+    </div>
+
+    <form action="/", method="POST" class="form_add">
+        <input type="text" name="descricao" id="descricao" placeholder="Descrição">
+        <select name="tipo">
+            <option value="Débito">Débito</option>
+            <option value="Crédito">Crédito</option>
+        </select>
+        <input type="text" name="valor" id="valor" placeholder="Valor">
+        <input type="submit" value="Adicionar" id="btn_Add">
+    </form>
+
     <table>
         <tr>DATA</tr>
         <tr>DESCRIÇÃO</tr>
@@ -15,17 +32,7 @@
         <tr>TIPO</tr>
         <tr>AÇÃO</tr>
         <br>
-        <form action="/", method="POST">
-            <input type="text" name="descricao" id="descricao">
-            <select name="tipo">
-                <option value="Débito">Débito</option>
-                <option value="Crédito">Crédito</option>
-            </select>
-            <input type="text" name="valor" id="valor">
-            <input type="submit" value="Adicionar" id="btn_Add">
-        </form>
         {% for lancamento in lancamentos%}
-
         <tr>
             <td id="campo_data">{{lancamento.data_lancamento.strftime("%d/%m/%Y")}}</td>
             <td id="campo_descricao">{{lancamento.descricao}}</td>

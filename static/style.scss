@@ -1,3 +1,6 @@
+$cor_debito: #f99494;
+$cor_credito: #94f9ac;
+
 body{
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -5,14 +8,31 @@ body{
 }
 
 table{
+    margin: auto;
     td, tr{
         padding: 2px;
-        border: 1px solid #ccc;
+    }
+    tr{
+        border: gray solid 1px;
     }
 }
 
 .btn{
     cursor: pointer;
+}
+
+.menu_estatisticas{
+    text-align: center;
+    padding-bottom: 20px;
+
+    label{
+        padding: 15px;
+    }
+}
+
+
+.form_add{
+    text-align: center;
 }
 
 #campo_data{
