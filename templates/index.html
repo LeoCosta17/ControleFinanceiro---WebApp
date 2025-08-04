@@ -10,9 +10,9 @@
     <h1>Lançamentos</h1>
 
     <div class="menu_estatisticas">
-        <label>TOTAL DÉBITOS</label>
-        <label>TOTAL CREDITOS</label>
-        <label>SALDO</label>
+        <label>Débitos: R${{ total_debitos }}</label>
+        <label>Créditos: R${{ total_creditos }}</label>
+        <label>Saldo: R${{saldo}}</label>
     </div>
 
     <form action="/", method="POST" class="form_add">
@@ -24,13 +24,15 @@
         <input type="text" name="valor" id="valor" placeholder="Valor">
         <input type="submit" value="Adicionar" id="btn_Add">
     </form>
-
+    {% if lancamentos | length < 1 %}
+    <h3>Não há lançamentos! Crie um!</h3>
+    {% else %}
     <table>
-        <tr>DATA</tr>
-        <tr>DESCRIÇÃO</tr>
-        <tr>VALOR</tr>
-        <tr>TIPO</tr>
-        <tr>AÇÃO</tr>
+        <th>DATA</th>
+        <th>DESCRIÇÃO</th>
+        <th>TIPO</th>
+        <th>VALOR</th>
+        <th>AÇÃO</th>
         <br>
         {% for lancamento in lancamentos%}
         <tr>
@@ -45,6 +47,7 @@
         </tr>
         {% endfor %}
     </table>
+    {% endif %}
 </div>
 
 {% endblock %}

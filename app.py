@@ -47,7 +47,15 @@ def index():
             return f"ERROR: {err}"
     else:
         lancamentos = Lancamento.query.order_by(Lancamento.data_lancamento).all()
-        return render_template("index.html", lancamentos=lancamentos)
+
+        total_debitos = sum(lancamento.valor for lancamento in lancamentos if lancamento.tipo.lower() == "débito")
+        total_creditos = sum(lancamento.valor for lancamento in lancamentos if lancamento.tipo.lower() == "crédito")
+        saldo = total_creditos - total_debitos
+        return render_template("index.html", 
+                               lancamentos=lancamentos,
+                               total_debitos=total_debitos,
+                               total_creditos=total_creditos,
+                               saldo=saldo)
     
 
 #Deletar elemento
