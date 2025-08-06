@@ -10,9 +10,9 @@
     <h1>Lançamentos</h1>
 
     <div class="menu_estatisticas">
-        <label>Débitos: R${{ total_debitos }}</label>
-        <label>Créditos: R${{ total_creditos }}</label>
-        <label>Saldo: R${{saldo}}</label>
+        <label>Débitos: R${{ total_debitos | round(2) | replace('.', ',')}}</label>
+        <label>Créditos: R${{ total_creditos | round(2) | replace('.', ',')}}</label>
+        <label>Saldo: R${{saldo | round(2) | replace('.', ',')}}</label>
     </div>
 
     <form action="/", method="POST" class="form_add">
@@ -21,7 +21,7 @@
             <option value="Débito">Débito</option>
             <option value="Crédito">Crédito</option>
         </select>
-        <input type="text" name="valor" id="valor" placeholder="Valor">
+        <input type="text" name="valor" id="valor" placeholder="Valor" >
         <input type="submit" value="Adicionar" id="btn_Add">
     </form>
     {% if lancamentos | length < 1 %}
@@ -39,7 +39,7 @@
             <td id="campo_data">{{lancamento.data_lancamento.strftime("%d/%m/%Y")}}</td>
             <td id="campo_descricao">{{lancamento.descricao}}</td>
             <td id="campo_tipo">{{lancamento.tipo}}</td>
-            <td id="campo_valor">{{lancamento.valor}}</td>
+            <td id="campo_valor">R$ {{lancamento.valor | round(2) | replace('.',',')}}</td>
             <td>
                 <a href="/delete/{{lancamento.id}}" class="btn" id="btn_deletar">Deletar</a>
                 <a href="/update/{{lancamento.id}}" class="btn" id="btn_atualizar">Atualizar</a>
